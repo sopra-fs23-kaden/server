@@ -1,3 +1,5 @@
+[25.Apr.2023] Editted by Kaden for testing WebSocket on GCP
+
 # SoPra RESTful Service Template FS23
 
 ## Getting started with Spring Boot
