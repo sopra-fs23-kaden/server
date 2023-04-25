@@ -54,6 +54,8 @@ bootJar {
 }
 // [KADEN] EDITED for the issue 'Task 'sonarqube' is deprecated.
 // Set the right value on "TODO"
+// Set SonarCloud Server Project: Administration > Automatic Analysis (OFF)
+// SonarCloud supports two mode of analysis: Automatic analysis and CI analysis.
 sonarqube {
   properties {
     property "sonar.projectKey", "sopra-fs23-kaden_server"
