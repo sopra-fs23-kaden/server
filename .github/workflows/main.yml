@@ -38,6 +38,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      # [KADEN] NEWLY ADDED FOR Github Secret Key---------------------------------
+      - name: Generate env file with using github secrets
+        id: generate_dotenv_file
+        env:
+          INVISIBLE_KEY: ${{ secrets.INVISIBLE_KEY }}
+          GCP_SERVICE_CREDENTIALS: ${{ secrets.GCP_SERVICE_CREDENTIALS }}
+        run: echo "INVISIBLE_KEY=$INVISIBLE_KEY" > forappyaml.env
+
+      - name: Prepare app.yaml
+        id: prepare-app-yaml
+        uses: mshick/fast-envsubst@v1
+        with:
+          env-file: forappyaml.env
+          in-file: app.yaml.template
+          out-file: app.yaml
+      # -------------------------------------------------------------------
+
       - name: Deploy to App Engine
         id: deploy
         uses: google-github-actions/deploy-appengine@v0.2.0
