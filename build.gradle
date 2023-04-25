@@ -52,13 +52,13 @@ dependencies {
 bootJar {
     archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
 }
-// [KADEN] EDITED for the issue 'Task 'sonarqube' is deprecated. Use 'sonar' instead.'
-// sonar >>> sonarqube
-sonar {
+// [KADEN] EDITED for the issue 'Task 'sonarqube' is deprecated.
+// Set the right value on "TODO"
+sonarqube {
   properties {
-    property "sonar.projectKey", "TODO"
-    property "sonar.organization", "TODO"
-    property "sonar.host.url", "TODO"
+    property "sonar.projectKey", "sopra-fs23-kaden_server"
+    property "sonar.organization", "sopra-fs23-kaden"
+    property "sonar.host.url", "https://sonarcloud.io"
   }
 }
 
