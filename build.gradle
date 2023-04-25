@@ -52,8 +52,9 @@ dependencies {
 bootJar {
     archiveFileName = "${archiveBaseName.get()}.${archiveExtension.get()}"
 }
-
-sonarqube {
+// [KADEN] EDITED for the issue 'Task 'sonarqube' is deprecated. Use 'sonar' instead.'
+// sonar >>> sonarqube
+sonar {
   properties {
     property "sonar.projectKey", "TODO"
     property "sonar.organization", "TODO"
