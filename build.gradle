@@ -57,11 +57,11 @@ bootJar {
 // Set SonarCloud Server Project: Administration > Automatic Analysis (OFF)
 // SonarCloud supports two mode of analysis: Automatic analysis and CI analysis.
 sonarqube {
-  properties {
-    property "sonar.projectKey", "sopra-fs23-kaden_server"
-    property "sonar.organization", "sopra-fs23-kaden"
-    property "sonar.host.url", "https://sonarcloud.io"
-  }
+    properties {
+        property "sonar.projectKey", "sopra-fs23-kaden_server"
+        property "sonar.organization", "sopra-fs23-kaden"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
 }
 
 jacocoTestReport {
