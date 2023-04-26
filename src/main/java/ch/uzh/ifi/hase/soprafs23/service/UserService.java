@@ -68,12 +68,15 @@ public class UserService {
 
     String baseErrorMessage = "The %s provided %s not unique. Therefore, the user could not be created!";
     if (userByUsername != null && userByName != null) {
+        String identity = "username: " + userByUsername.getUsername() + "/ name: " + userByName.getName() ;
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
-          String.format(baseErrorMessage, "username and the name", "are"));
+          String.format(baseErrorMessage, identity, "are"));
     } else if (userByUsername != null) {
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format(baseErrorMessage, "username", "is"));
+        String identity = "username: " + userByUsername.getUsername() ;
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format(baseErrorMessage, identity, "is"));
     } else if (userByName != null) {
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format(baseErrorMessage, "name", "is"));
+        String identity = "name: " + userByName.getName() ;
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format(baseErrorMessage, identity, "is"));
     }
   }
 }
