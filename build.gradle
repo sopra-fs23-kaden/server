@@ -33,6 +33,12 @@ springBoot {
 
 dependencies {
     implementation 'org.mapstruct:mapstruct:1.3.1.Final'
+
+    // [KADEN] ADDED for WebSocket ------------
+    implementation 'org.jetbrains:annotations:20.1.0'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    // ----------------------------------------
+
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.3.1.Final'
     testAnnotationProcessor 'org.mapstruct:mapstruct-processor:1.3.1.Final'
 

@@ -41,17 +41,40 @@ public class UserService {
 
   public User createUser(User newUser) {
     newUser.setToken(UUID.randomUUID().toString());
-    newUser.setStatus(UserStatus.OFFLINE);
-    checkIfUserExists(newUser);
-    // saves the given entity but data is only persisted in the database once
-    // flush() is called
-    newUser = userRepository.save(newUser);
-    userRepository.flush();
+    newUser.setStatus(UserStatus.ONLINE);
 
-    log.debug("Created Information for User: {}", newUser);
+    User userByUsername = userRepository.findByUsername(newUser.getUsername());
+    User userByName = userRepository.findByName(newUser.getName());
+
+      if (userByUsername != null){
+        if (userByName == userByUsername){
+            userByUsername.setStatus(UserStatus.ONLINE);
+            log.debug("Login Successfully: {}", newUser);
+            newUser = userByUsername;
+        }
+        else{
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format("Wrong name!"));
+        }
+    }
+    else{
+        checkIfUserExists(newUser);
+        // saves the given entity but data is only persisted in the database once
+        // flush() is called
+        newUser = userRepository.save(newUser);
+        userRepository.flush();
+
+        log.debug("Created Information for User: {}", newUser);
+    }
     return newUser;
   }
 
+  public User logoutUser(String userName) {
+      User updatedUser = userRepository.findByUsername(userName);
+      updatedUser.setStatus(UserStatus.OFFLINE);
+      updatedUser = userRepository.save(updatedUser);
+      userRepository.flush();
+      return updatedUser;
+  }
   /**
    * This is a helper method that will check the uniqueness criteria of the
    * username and the name
