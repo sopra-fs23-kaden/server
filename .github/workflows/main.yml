@@ -64,7 +64,7 @@ jobs:
         with:
           deliverables: app.yaml
           version: v2 # [KADEN] CHANGED for websocket from v1 to v2
-           credentials: ${{ secrets.GCP_SERVICE_CREDENTIALS }}
+          credentials: ${{ secrets.GCP_SERVICE_CREDENTIALS }}
 #          credentials: ${{ secrets.GCP_SERVICE_CREDENTIALS_TMP }} # [KADEN] CHANGED for tmp deployment
       - name: Test
         run: curl "${{ steps.deploy.outputs.url }}"
