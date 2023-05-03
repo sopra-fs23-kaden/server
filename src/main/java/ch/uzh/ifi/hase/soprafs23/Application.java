@@ -8,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import java.sql.Timestamp;
 
 @RestController
 @SpringBootApplication
@@ -31,8 +32,9 @@ public class Application {
 
             For running on GCP, an env global variable will be automatically set by using main.yml on .github/workflows
       */
+      Timestamp ts1 = Timestamp.valueOf("2018-09-01 09:01:15");
       String secret="initialize";
-      secret = System.getenv("INVISIBLE_KEY");
+      secret = System.getenv("INVISIBLE_KEY")+ts1;
       System.out.println("LOCAL SECRET KEY CHECKPOINT " + secret);
       return "The application is running. " + secret;
   }
